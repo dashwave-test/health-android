@@ -186,7 +186,23 @@ class TheActivity : AppCompatActivity(), TheActivityUi {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     router.onReady(savedInstanceState)
+    val button = findViewById<Button>(R.id.show_meme_button)
+    button.setOnClickListener {
+        // Implement logic to fetch a random meme and display it in a dialog
+        showRandomMemeDialog()
+    }
     delegate.onRestoreInstanceState(savedInstanceState)
+  }
+
+  private fun showRandomMemeDialog() {
+    // Implement logic to fetch a random meme and display it in a dialog using MaterialAlertDialogBuilder
+    MaterialAlertDialogBuilder(this)
+      .setTitle("Random Meme")
+      .setMessage("Here is your random meme!")
+      .setPositiveButton("OK") { dialog, _ ->
+        dialog.dismiss()
+      }
+      .show()
   }
 
   @SuppressLint("CheckResult")
